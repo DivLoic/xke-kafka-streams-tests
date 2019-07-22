@@ -1,36 +1,39 @@
 package fr.xebia.ldi.crocodile.stream.operator
 
-import java.lang
-
 import fr.xebia.ldi.crocodile.common.model.Client.ClientKey
-import fr.xebia.ldi.crocodile.common.model.Voucher
+import fr.xebia.ldi.crocodile.common.model.{Coupon, Voucher}
 import fr.xebia.ldi.crocodile.stream.model.UsedLink
-import org.apache.kafka.common.header.Header
 import org.apache.kafka.streams.KeyValue
-import org.apache.kafka.streams.kstream.{Transformer, TransformerSupplier, ValueTransformer, ValueTransformerSupplier}
+import org.apache.kafka.streams.kstream.{Transformer, TransformerSupplier}
 import org.apache.kafka.streams.processor.ProcessorContext
+import org.apache.kafka.streams.state.KeyValueStore
 
 import scala.collection.JavaConverters._
+
 /**
   * Created by loicmdivad.
   */
 object Processors {
 
-  val GrantCouponProcessor: TransformerSupplier[ClientKey, UsedLink, KeyValue[ClientKey, Voucher]] = () => new Transformer[ClientKey, UsedLink, KeyValue[ClientKey, Voucher]] {
+  def grantCoupon(couponsStoreName: String): TransformerSupplier[ClientKey, UsedLink, KeyValue[ClientKey, Voucher]] =
 
-    var context: ProcessorContext = _
+    () => new Transformer[ClientKey, UsedLink, KeyValue[ClientKey, Voucher]] {
 
-    override def init(context: ProcessorContext): Unit = {
-      this.context = context
+      var context: ProcessorContext = _
+      var couponsStore: KeyValueStore[String, Coupon] = _
+
+      override def init(context: ProcessorContext): Unit = {
+        this.context = context
+        this.couponsStore = this.context.getStateStore(couponsStoreName).asInstanceOf[KeyValueStore[String, Coupon]]
+      }
+
+      def transform(key: ClientKey, value: UsedLink): KeyValue[ClientKey, Voucher] = {
+        val validaitonFlagOpt = this.context.headers.headers("invalid").asScala.headOption
+
+        println(validaitonFlagOpt)
+        if (validaitonFlagOpt.isEmpty) new KeyValue(key, Voucher()) else null
+      }
+
+      override def close(): Unit = ()
     }
-
-    def transform(key:ClientKey, value:UsedLink): KeyValue[ClientKey, Voucher] = {
-      val validaitonFlagOpt = this.context.headers.headers("invalid").asScala.headOption
-
-      println(validaitonFlagOpt)
-      if(validaitonFlagOpt.isEmpty) new KeyValue(key, Voucher()) else null
-    }
-
-    override def close(): Unit = ()
-  }
 }

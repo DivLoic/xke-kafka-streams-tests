@@ -56,7 +56,7 @@ trait MainTopology extends CrocoSerdes with CrocoConversion with CrocoTools {
 
       .join(purchases)(Joiners.ActiveLinkPurchaseJoiner, JoinWindows.of(config.correlationWindow.asJava))
 
-      .transform(Processors.GrantCouponProcessor)
+      .transform(Processors.grantCoupon(config.stores.coupons))
 
       .to(config.topics.vouchers)
 
