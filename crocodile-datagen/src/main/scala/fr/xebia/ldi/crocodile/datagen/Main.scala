@@ -83,7 +83,7 @@ object Main extends App with CommonSerdes {
 
   val purchaseProducer = ProducerSettings(system, clientKeySerde.serializer(), purchaseSerde.serializer())
 
-  val purchase = Purchase(UUID.randomUUID().toString, Vector(Item("abc", 20.0, "", ItemCategory$.Cloth)))
+  val purchase = Purchase(UUID.randomUUID().toString, Vector(Item("abc", 20.0, "", ItemCategory.Cloth)))
 
   Source.single(pageviews.head._1)
     .map(c => Message(new ProducerRecord(conf.topics.purchases, c, purchase), NotUsed))

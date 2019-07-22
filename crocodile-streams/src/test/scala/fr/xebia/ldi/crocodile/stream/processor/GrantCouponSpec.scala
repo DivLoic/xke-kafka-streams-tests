@@ -134,7 +134,9 @@ class GrantCouponSpec extends FlatSpec with Matchers with GivenWhenThen with Cro
 
 object GrantCouponSpec {
 
-  val Coupons = Coupon("#1") :: Coupon("#2") :: Coupon("#3") :: Nil map(c => (c.id, c)) toVector
+  val Coupons: Vector[(String, Coupon)] =
+
+    Coupon("#1") :: Coupon("#2") :: Coupon("#3") :: Nil map(c => (c.id, c)) toVector
 
   def addHeaders[T](headers: Headers): ValueTransformerSupplier[T, T] = () => new ValueTransformer[T, T] {
 
