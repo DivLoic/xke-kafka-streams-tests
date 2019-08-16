@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>fr.xebia.ldi</groupId>
+        <artifactId>kafka-streams-test-pyramid</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <artifactId>kstreams-test-scala</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>crocodile4s-commons</module>
+        <module>crocodile4s-datagen</module>
+        <module>crocodile4s-streams</module>
+    </modules>
+
+    <properties>
+        <scala.version>2.12.8</scala.version>
+        <scala.deps.verison>2.12</scala.deps.verison>
+        <scalatest.version>3.0.8</scalatest.version>
+        <!-- dependencies -->
+        <alpaka.version>1.0.4</alpaka.version>
+        <avro4s.version>2.0.4</avro4s.version>
+        <circe.version>0.11.1</circe.version>
+        <confluent.version>5.2.2</confluent.version>
+        <kafka.version>2.2.1</kafka.version>
+        <logback.version>1.2.3</logback.version>
+        <mockedstreams.version>3.3.0</mockedstreams.version>
+        <pureconf.version>0.11.1</pureconf.version>
+        <scopt.version>3.7.1</scopt.version>
+    </properties>
+
+    <dependencies>
+        <!-- tests -->
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.deps.verison}</artifactId>
+            <version>${scalatest.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>4.1.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                    <jvmArgs>
+                        <jvmArg>-Xms64m</jvmArg>
+                        <jvmArg>-Xmx1024m</jvmArg>
+                        <!--<jvmArg>-encoding utf8</jvmArg>-->
+                        <jvmArg>-Xfatal-warnings</jvmArg>
+                        <jvmArg>-Ypartial-unification</jvmArg>
+                        <jvmArg>-deprecation -unchecked -feature</jvmArg>
+                        <jvmArg>-language:implicitConversions</jvmArg>
+                        <jvmArg>-language:higherKinds</jvmArg>
+                        <jvmArg>-language:existentials</jvmArg>
+                        <jvmArg>-language:postfixOps</jvmArg>
+                    </jvmArgs>
+                </configuration>
+
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

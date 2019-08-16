@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>fr.xebia.ldi</groupId>
+        <artifactId>kstreams-test-scala</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>crocodile4s-streams</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>crocodile4s-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams-scala_${scala.deps.verison}</artifactId>
+            <version>${kafka.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.circe</groupId>
+            <artifactId>circe-core_${scala.deps.verison}</artifactId>
+            <version>${circe.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.circe</groupId>
+            <artifactId>circe-parser_${scala.deps.verison}</artifactId>
+            <version>${circe.version}</version>
+        </dependency>
+
+        <!-- tests -->
+        <dependency>
+            <groupId>com.madewithtea</groupId>
+            <artifactId>mockedstreams_${scala.deps.verison}</artifactId>
+            <version>${mockedstreams.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+    </build>
+
+</project>
