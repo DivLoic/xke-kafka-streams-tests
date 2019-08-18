@@ -1,0 +1,22 @@
+{
+  "type" : "record",
+  "name" : "Item",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "fields" : [ {
+    "name" : "id",
+    "type" : "string"
+  }, {
+    "name" : "price",
+    "type" : "double"
+  }, {
+    "name" : "name",
+    "type" : "string"
+  }, {
+    "name" : "category",
+    "type" : {
+      "type" : "enum",
+      "name" : "ItemCategory",
+      "symbols" : [ "Accessory", "Cloth", "Shoes" ]
+    }
+  } ]
+}

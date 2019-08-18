@@ -1,0 +1,6 @@
+{
+  "type" : "record",
+  "name" : "Voucher",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "fields" : [ ]
+}

@@ -1,0 +1,6 @@
+{
+  "type" : "enum",
+  "name" : "ItemCategory",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "symbols" : [ "ItemCategory" ]
+}

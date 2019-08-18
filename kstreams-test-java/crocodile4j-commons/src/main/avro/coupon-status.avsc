@@ -1,0 +1,6 @@
+{
+  "type" : "enum",
+  "name" : "CouponStatus",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "symbols" : [ "Available", "Used" ]
+}

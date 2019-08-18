@@ -1,0 +1,17 @@
+{
+  "type" : "record",
+  "name" : "Coupon",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "fields" : [ {
+    "name" : "id",
+    "type" : "string"
+  }, {
+    "name" : "status",
+    "type" : {
+      "type" : "enum",
+      "name" : "CouponStatus",
+      "symbols" : [ "Available", "Used" ]
+    },
+    "default" : "Available"
+  } ]
+}

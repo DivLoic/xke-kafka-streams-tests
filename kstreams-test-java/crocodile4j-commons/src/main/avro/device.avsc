@@ -1,0 +1,6 @@
+{
+  "type" : "enum",
+  "name" : "Device",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "symbols" : [ "Computer", "Laptop", "Phone", "Raspberry", "Tablet", "Watch" ]
+}

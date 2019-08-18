@@ -1,0 +1,32 @@
+{
+  "type" : "record",
+  "name" : "Link",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "fields" : [ {
+    "name" : "client",
+    "type" : {
+      "type" : "record",
+      "name" : "Client",
+      "fields" : [ {
+        "name" : "email",
+        "type" : "string"
+      }, {
+        "name" : "gender",
+        "type" : {
+          "type" : "enum",
+          "name" : "Gender",
+          "symbols" : [ "Child", "F", "M" ]
+        }
+      }, {
+        "name" : "birthDate",
+        "type" : {
+          "type" : "int",
+          "logicalType" : "date"
+        }
+      } ]
+    }
+  }, {
+    "name" : "url",
+    "type" : "string"
+  } ]
+}

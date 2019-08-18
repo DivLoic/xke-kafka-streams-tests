@@ -1,0 +1,6 @@
+{
+  "type" : "enum",
+  "name" : "Gender",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "symbols" : [ "Child", "F", "M" ]
+}

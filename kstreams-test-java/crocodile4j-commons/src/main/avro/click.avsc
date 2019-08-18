@@ -1,0 +1,15 @@
+{
+  "type" : "record",
+  "name" : "Click",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "fields" : [ {
+    "name" : "url",
+    "type" : "string"
+  }, {
+    "name" : "headers",
+    "type" : {
+      "type" : "map",
+      "values" : "string"
+    }
+  } ]
+}

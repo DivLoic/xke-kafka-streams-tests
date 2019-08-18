@@ -19,4 +19,21 @@
         <module>crocodile4j-streams</module>
     </modules>
 
+    <properties>
+        <junit.version>5.5.1</junit.version>
+        <!-- dependencies -->
+        <alpaka.version>1.0.4</alpaka.version>
+        <avro.version>1.9.0</avro.version>
+        <gson.version>2.8.5</gson.version>
+        <confluent.version>5.2.2</confluent.version>
+        <kafka.version>2.2.1</kafka.version>
+        <logback.version>1.2.3</logback.version>
+        <mockedstreams.version>3.3.0</mockedstreams.version>
+        <pureconf.version>0.11.1</pureconf.version>
+        <scopt.version>3.7.1</scopt.version>
+
+        <!-- plugin -->
+        <avro.maven.plugin.version>${avro.version}</avro.maven.plugin.version>
+    </properties>
+
 </project>

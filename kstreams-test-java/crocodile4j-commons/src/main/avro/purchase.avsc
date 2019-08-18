@@ -1,0 +1,35 @@
+{
+  "type" : "record",
+  "name" : "Purchase",
+  "namespace" : "fr.xebia.ldi.crocodile.common.model",
+  "fields" : [ {
+    "name" : "cardId",
+    "type" : "string"
+  }, {
+    "name" : "items",
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Item",
+        "fields" : [ {
+          "name" : "id",
+          "type" : "string"
+        }, {
+          "name" : "price",
+          "type" : "double"
+        }, {
+          "name" : "name",
+          "type" : "string"
+        }, {
+          "name" : "category",
+          "type" : {
+            "type" : "enum",
+            "name" : "ItemCategory",
+            "symbols" : [ "Accessory", "Cloth", "Shoes" ]
+          }
+        } ]
+      }
+    }
+  } ]
+}
